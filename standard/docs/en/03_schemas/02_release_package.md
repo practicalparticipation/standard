@@ -1,3 +1,3 @@
 <div class="schema-holder">
-	<script src="/standard/static/docson/widget.js" data-schema="/standard/r/{{RELEASE}}/release-package-schema.json"></script>
+	<script src="{{ STATIC_URL }}docson/widget.js" data-schema={% url 'schema' release_name 'release-package-schema' %}></script>
 </div>
