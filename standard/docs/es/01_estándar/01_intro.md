@@ -13,6 +13,9 @@
 
 ## Purpose
 
+
+Limita el número de artículos que se mostrará
+
 This is the beta release of the Open Contracting Data Standard. This release provides:
 
 * A description of the overall Open Contracting Data Standard Model
