@@ -4,7 +4,7 @@
 
 **ToDo: Write intro paragraph**
 
-### Open Contracting IDs
+### OCID
 
 <span class="lead">An Open Contracting ID (ocid) is a **globally unique identifier **for a** contracting process**.</span> 
 

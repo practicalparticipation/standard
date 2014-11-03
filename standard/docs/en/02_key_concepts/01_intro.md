@@ -5,10 +5,11 @@
 This section introduces key concepts using in the Open Contracting Data Standard. After reading this section you should understand:
 
 1. How to identify the **[contracting processes](../definitions)** that can be described with OCDS;
-2. The disclosure of data at each stage of a contract process through regular **releases**;
-3. The generation of summary **records**;
-4. Managing **revisions **and **amendments** to key information;
-5. The relationship of** releases** to legal **notices;**
+1. The importance of providing **documents** as well as data;
+3. The disclosure of data at each stage of a contract process through regular **releases**;
+4. The generation of summary **records**;
+5. Managing **revisions **and **amendments** to key information;
+6. The relationship of **releases** to legal **notices;**
 
 This section also covers
 

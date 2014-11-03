@@ -65,3 +65,6 @@ Publishers should ensure that the web server providing access to bulk files corr
 ### Supporting discovery with .well-known 
 
 See [https://github.com/open-contracting/standard/issues/75](https://github.com/open-contracting/standard/issues/75) 
+
+
+### Permanence 
