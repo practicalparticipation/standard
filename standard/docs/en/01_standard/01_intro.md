@@ -1,7 +1,5 @@
 [TOC]
 
-## Home
-
 <span class="lead">Governments around the world spend an estimated US $9.5 trillion every single year through contracts. Yet, contracting information is often unavailable for public scrutiny. The Open Contracting Partnership is working to change that.</span>
 
 <span class="lead">The Open Contracting Data Standard makes it easy to publish accessible and structured **releases** of **data** _and_ **documents** at each stage of a **contracting process.**</span>
@@ -19,7 +17,7 @@ This initial version of the standard is designed around describing contracts tha
 </ul>
 <div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="publishers">  
-   
+
 * Read more about the origin, goals & development of the standard;
 * Review the check-list for data creators;
 * Publish your own data using the schema reference and publication guidance;
