@@ -2,11 +2,11 @@
 
 ## Origin, goals and development
 
-Countries signing up to the [Open Contracting Global Principles](http://www.open-contracting.org/global_principles) commit to share *"information related to the formation, performance, and completion of public contracts"* including data on all stages of contracting, including subcontracting arrangements.
+<span class="lead">Countries and organizations signing up to the [Open Contracting Global Principles](http://www.open-contracting.org/global_principles) commit to share *"information related to the formation, performance, and completion of public contracts"* including data on all stages of contracting, including subcontracting arrangements.
 
-The **Open Contracting Data Standard (OCDS)** has been developed to allow as much of this information as possible to be shared as **structured, re-usable, standardised data**.
+The **Open Contracting Data Standard (OCDS)** has been developed to allow information providers to share as much of this information as possible as **structured, re-usable, standardised data**.</span>
 
-The OCDS specification is designed to enable the widest possible range of stakeholders to use contracting data and documents to achieve value for money for the government, a competitive playing field for the private sector, and high quality goods, works, and services for citizens. 
+The OCDS specification details the technical components of enabling the widest possible range of stakeholders to use contracting data and documents to achieve value for money for the government, a competitive playing field for the private sector, and high quality goods, works, and services for citizens. 
 
 ### Support and funding
 
@@ -14,7 +14,7 @@ The Open Contracting Data Standard is a core product of the [Open Contracting Pa
 
 Final adoption, and future development and support for the specification will be managed through the independent Open Contracting Partnership Secretariat, which will be operational in early 2015. 
 
-### Development process: release candidate
+### Development process
 
 The development of the 1.0 Release Candidate specification taken place through a year-long process of supply and demand-side research, and open consultation. This processes has included:
 
