@@ -6,19 +6,19 @@
 
 ### Open Contracting IDs
 
-<span class="lead">An Open Contracting ID (ocid) is a **globally unique identifier **for a** contracting process**. 
+<span class="lead">An Open Contracting ID (ocid) is a **globally unique identifier **for a** contracting process**.</span> 
 
-Publishers will need to have, or to create, a consistent internal identifier that applies across the initiation, implementation and closure phases of a contract. To generate a globally unique OCID this is appended onto a prefix that is asigned to the publisher. </span>
+<span class="lead">Publishers will need to have, or to create, a consistent internal identifier that applies across the initiation, implementation and closure phases of a contract. To generate a globally unique OCID this is appended onto a prefix that is asigned to the publisher.</span>
 
 Each publisher is responsible for **registering or selecting a prefix **and then using this to generate their own **ocid**s. Publishers must then using their OCIDs consistently in any release of data related to a specific contracting process. 
 
-<div class="well">
+<span class="well">
 Using a consistent identifier for a **contracting process** that can tie together related tenders, awards, contracts and updates is vital for true Open Contracting. Without this, users cannot understand how these different processes relate to one another. 
 
 Some publishers may not currently have a consistent identifier used across the different stages of their contracting process, with different and non-linked identifiers for tenders, awards and contracts. In these cases, publishers will need to look at ways to either update their business processes to use a consistent identifier, or will need to develop a process to map existing different identifiers to a common contracting process identifier that can be used to generate an OCID.
 
 The use of a **globally unique** OCID allows third-parties to refer to a contracting process with confidence, and means that when multiple open contracting datasets are brought together there is no risk of data about different contracting processes clashing or becoming confused. 
-</div>
+</span>
 
 #### Construction
 

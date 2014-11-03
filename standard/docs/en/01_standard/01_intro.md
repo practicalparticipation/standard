@@ -15,7 +15,7 @@ This initial version of the specification is designed around describing contract
 <li role="presentation" class="active"><a href="#publishers" role="tab" data-toggle="tab">Publishers</a></li>
 <li role="presentation"><a href="#users" role="tab" data-toggle="tab">Users</a></li>
 </ul>
-<div class="tab-content">git 
+<div class="tab-content">
 <div role="tabpanel" class="tab-pane active" id="publishers">  
 
 <ul>
