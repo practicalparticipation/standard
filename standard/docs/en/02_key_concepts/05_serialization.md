@@ -2,9 +2,9 @@
 
 ### Serializations
 
-The Open Contracting Data Standard provides a **structured data model** for capturing in-depth information about all stages of the contracting process.** **
+<span class="lead">The Open Contracting Data Standard provides a **structured data model** for capturing in-depth information about all stages of the contracting process.</span>
 
-The current canonical version of this data model is provided by a **JSON Schema** which describes field names, field definitions and structures for the data. The compliance of data with the Open Contracting Data Standard will be assessed against this schema.
+<span class="lead">The current canonical version of this data model is provided by a **JSON Schema** which describes field names, field definitions and structures for the data. The compliance of data with the Open Contracting Data Standard will be assessed against this schema.</span>
 
 However, there are many use cases where publishers and users will want to work with data serialized in other formats. For this reason, the current version of OCDS supports a number of **secondary serializations **which are based on the canonical schema.
 
@@ -12,9 +12,33 @@ The two serialisations that will exist alongside the 1.0 RC are CSV Datapackage 
 
 These secondary serialisations act as a stepping-stone to generate fully structured open contracting data, or as a format for use when carrying out basic analysis.
 
+ToDo: Put in real examples
+
+<div class="tabbable">
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#json" data-toggle="tab">json</a></li>
+  <li><a href="#csv" data-toggle="tab">csv</a></li>
+</ul>
+
+<div class="tab-content">
+<div class="tab-pane active" id="json">
+Here is a json:
+
+<div class="include-json" data-src="standard/example/example.json"></div>
+</div>
+
+<div class="tab-pane" id="csv">
+And here is a CSV:
+
+<div class="include-csv" data-src="standard/example/example.csv" data-table-class="table table-striped"></div>
+</div>
+
+</div>
+</div>
+
 **Single table CSV** 
 
- In a single flat table it is possible to represent a contracting process which has only one award, one contract, and one line-item and one attached document in each.
+In a single flat table it is possible to represent a contracting process which has only one award, one contract, and one line-item and one attached document in each.
 
 **  CSV Datapackage and Spreadsheet Workbook 
 **By having a sub-table for each important object that can exist multiple times within a release, a greater degree of the structured data can be modelled. Sub-tables are provided for:
