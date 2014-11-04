@@ -1,10 +1,14 @@
 [TOC]
 
-# Releases, Records, Amendments and Notices
+# Documents, Releases, Records, Amendments and Notices
 
 ## Documents
 
-ToDo:
+<span class="lead">Documents are a vital part of the Open Contracting Data Standard. Whilst releases and records provide a machine-readable summary of a contracting process, they should always be supported by links to well-managed documents.</span>
+
+A contracting process generates many documents - from procurement plans, to tender notices and calls for proposals, and the actual text of contracts. Wherever there is no legal or policy restriction on doing so, these should be placed online in a stable location, and linked to from within the relevant OCDS release and records. 
+
+See the [attachments](../../schema/reference#attachment) section of [schema reference](../../schema/reference) for more details of how to include documents in your data releases, and the [documentType code list](../../schema/codelists#document-type) for a list of common documents that may be included.
 
 ## Releases
 

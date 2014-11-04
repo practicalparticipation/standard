@@ -7,7 +7,7 @@ To maximise the interoperability of data published using the Open Contracting Da
 
 ### Conformance
 
-To maximise the interoperability of data published using the Open Contracting Data Standard we have set out key principles for **conforming** to the standard, [based on the Popolo Project](http://www.popoloproject.com/specs/#conformance)’s approach. 
+To maximise the interoperability of data published using the Open Contracting Data Standard we have set out key principles for **conforming** to the standard, [based on the Popolo Project](http://www.popoloproject.com/specs/#conformance) approach. 
 
 1. A conforming implementation *may* use only a subset of this specification's terms.
 
@@ -17,13 +17,13 @@ To maximise the interoperability of data published using the Open Contracting Da
 
 4. It *may* use terms from outside this specification's terms where this specification's terms are insufficient.
 
-5. If an implementation serializes to JSON, its serializations *must* validate against this specification's JSON Schema.
+5. If an implementation serializes to JSON, its serializations *must* [validate](http://ocds.open-contracting.org/validator/) against this specification's JSON Schema.
 
-Whenever using terms from outside the OCDS standard, we encourage the publisher or user responsible to consult with the community on the best approach to adopt.
+Whenever using terms from outside the OCDS standard, we encourage the publisher or user responsible to consult with the community on the best approach to adopt. 
 
 ### Extensions
 
-Extensions to the standard can add new objects and properties to accomodate specific local requirements. An extension should only be created where it is not possible to model the required data using existing terms from the standard.
+Extensions to the standard can add new objects and properties to accommodate specific local requirements. An extension should only be created where it is not possible to model the required data using existing terms from the standard.
 
 Extensions should be documented and shared so that other publishers and users can draw upon them, and so that extensions can be considered for inclusion in a future version of the standard.
 

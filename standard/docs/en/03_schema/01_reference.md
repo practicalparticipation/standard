@@ -1,5 +1,9 @@
 [TOC]
 
+See [https://github.com/open-contracting/standard/issues/64](https://github.com/open-contracting/standard/issues/64)
+
+
+
 # Schema Reference
 
 <span class="lead">The [OCDS Schema pages](ToDo) provides a detailed specification of the fields and data structures to use when publishing data. This reference section works step-by=step through additional supporting information to assist publishers and users of the data.</span>
@@ -145,11 +149,69 @@ ToDo: Check if numberOfBidders and numberOfBids included
 ### Implementation
 
 
+
 ## Record structure
+
+Whereas there can be multiple releases concerning a given contracting process, there is a single **contracting record** for each OCID, providing a summary of all the available data about this particular contracting process.
+
+Releases MUST contain:
+
+* An [OCID](../../key_concepts/identifiers#ocid)
+* An array of **releases** related to this contracting process - either by providing a URL for where these releases can be found, or embedding a full copy of the release
+
+Release SHOULD contain:
+
+* **compiledRelease** - the latest version of all open contracting process fields, represented using the release schema. For example, if a contractSignature release has been issued with with a contractValue of $100, and then a contractAmendment release has been issued with a contractValue updated to $200, the compiledRelease would have contract/contractValue of $200.
+
+and
+
+* **versionedRelease** - containing the history of the data in the compiledRecord, with all known past values of any field and the release that information came from.
+
+Records should be embedded within a record package.  
+
+### Package meta-data
+
+ToDo
+
+### Top Level Fields
+
+#### Packages
+
+### Records
+
+An array of one or more records, consisting of the following sections:
+
+* Releases (required)
+* Compiled Release (optional)
+* Versioning Release (optional)
+
+#### Releases
+
+The releases that go to make up a contracting process can be provided in two ways:
+
+* URLs for each release
+* Embedded copies of the release
+
+If providing and array of URLs, it should be possible for a consuming application to look up each URL, retrieve a release package, and locate the release inside it. 
+
+In order to locate the specific release inside a release package the releaseID of the release should be appended to the package URL using a fragment identifier.
+
+For example:
+
+* http://ocds.open-contracting.org/demos/releases/12345.json#ocds-a2ef3d01-1594121/1 to refer to the release with releaseID:ocds-a2ef3d01-1594121/1 
+
+ToDo: Construct these as real examples.
+
+#### Compiled Release
+
+#### Versioned Release
+
 
 
 
 ## Multi-language support
+
+ToDo: - CHECK RESOLUTION OF https://github.com/open-contracting/standard/issues/21
 
 Many publishers need to be able to share key data in multiple languages. All free-text title and description fields in the Open Contracting Data Standard can be given in one or more languages.
 
@@ -197,16 +259,41 @@ A contract is for ‘Software consultancy services’ may be published in a rele
 
 	| en | Software consultancy services | Servicios de consultoría en software | Services de conseil en logiciels |
 
-See [https://github.com/open-contracting/standard/issues/64](https://github.com/open-contracting/standard/issues/64)
 
 
 ## Field reference
 
 ### Entity
 
+
+
+
 ### Date
 
-[https://github.com/open-contracting/standard/issues/67](https://github.com/open-contracting/standard/issues/67) 
+ToDo: Embed block of schema.
+
+OCDS makes use of [ISO8601](http://en.wikipedia.org/wiki/ISO_8601) date-times, following [RFC3339 §5.6](http://tools.ietf.org/html/rfc3339#section-5.6).
+
+A time and timezone/offset MUST always be provided in a date-time.
+
+The following are valid date-times:
+
+* '2014-10-21T09:30:00Z' - 9:30 am on the 21st October 2014, UTC
+* '2014-11-18T18:00:00-06:00' - 6pm on 18th November 2014 CST (Central Standard Time)
+
+The following are not valid:
+
+* '2014-10-21' - Missing time portion
+* '2014-10-21T18:00' - missing seconds in time portion.
+* '2014-11-18T18:00:00' - Missing timezone/offset portion
+* '11/18/2014 18:00' - Not following the pattern at all!
+
+Accurately including the time and timezone offsets is particular important for tender deadlines and other dates which may have legal significance, and where users of the data may be from different timezones. The character Z on the end of a date-time indicates the [UTC](http://en.wikipedia.org/wiki/Coordinated_Universal_Time) (or Zero offset) timezone, whereas other timezones are indicated by their value '+/-hh:mm' UTC on the end of the date-time value. 
+
+In the event that the system from which data is drawn only includes dates, and does not include time information, publishers should consider sensible defaults for each field. For example, the startDate time of a clarification period may be set to '00:00:00Z' to indicate that clarifications can be requested from any time on the date stated, with the endDate time set to 23:23:59Z to indicate that clarifications can be sent up until the end of the endDate given. Alternatively, if clarification requests are only accepted in standard office hours, these values might be 09:00:00Z and 17:00:00Z respectively. 
+
+In the event that a date field is not bound to a specific time at all, publishers should choose a default time value of '23:23:59' and either 'Z' (for UTC) or the timezone of the publisher, indicating that the time refers to the end of the given date. 
+
 
 ### Item
 
