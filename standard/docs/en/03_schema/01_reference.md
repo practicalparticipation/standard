@@ -303,6 +303,43 @@ In the event that a date field is not bound to a specific time at all, publisher
 
 ### Location
 
+Possible to specify location of:
+
+* Line Items
+* Overall contract
+
+at the level of administrative geography. 
 
 
+
+Based on conversations with Owen Scott the following points seem important for location:
+
+(1) Latitude and longitude are generally not that useful, and are often misleading: locations can be an artefact of whatever geocoding process the publisher used, and most projects / contracts are not delivered at a point location. Rather, they are delivered in polygon spaces. 
+
+(2) Much better is to focus on administrative geography levels, and entities like cities. These are identified using gazetteers.
+
+(3) There is an important distinction between locations that **are** the administrative entity identified (e.g. the contract is to run waste collection for a given district), and location that are **within** an administrative entity (e.g. the contract is to build three schools in a district, but there are lots of other schools in the area too).
+
+(4) There is no single uniform global gazetteer to draw upon, and the coverage of gazetteers and the availability of open boundary and other data to go with them varies from country to country.
+
+This leads to a suggestion that our location property in an ideal world should consist of an array of objects, with properties to represent:
+
+* Gazetteer - used to identify the source from which a geographic identifier will be drawn. See the IATI GeographicVocabulary codelist for reference
+* Location Type - used to identify the kind of location being given, from a codelist including ADM0 - ADM10 (Administrative Levels), Entity or other
+* Location - a code drawn from the gazeteer for this location
+* Contain In / Is - a flag / enum list for whether the location is contained within the above gazetteer location, or is that location
+
+In practice, allowing an array of objects does raise a slight challenge:
+
+* The most natural place to attach location is to line-items (these are delivered at particular points) - but line-items do not have IDs, making the sub-table approach in flattened data difficult to achieve. (Solution: allow optional ids for line items?)
+
+In this approach, a valid gazetteer might be 'ISO 3166' allowing the country of a contract to be specified via a location entry with ADM0 (Country level) and the country code. Equally, if Open Street Map is included as a gazetteer, pointers could be made to specific entities in a country where users want very detailed geocoding. 
+
+The conversion of data to lat-lng or polygon maps would then be a third-party task using lookups. 
+
+Given that addresses can be geocoded, and organisational identifiers should be possible to look-up and resolve to an organisation with an address (in theory... though not practice in many cases just yet) which can be geocoded, I'm not sure there is a strong case to include location at the organisation level. 
+
+## Questions
+
+Are there cases where a publisher would want to state the location of a contract, but not at the line-item level? i.e. should location also be possible to attach at the general tender / contract level?
 
