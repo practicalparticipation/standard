@@ -1,12 +1,10 @@
 [TOC]
 
-See [https://github.com/open-contracting/standard/issues/64](https://github.com/open-contracting/standard/issues/64)
-
-
-
 # Schema Reference
 
-<span class="lead">The [Release Schema](../release) provides a detailed specification of the fields and data structures to use when publishing data. This reference section works step-by-step through additional supporting information to assist publishers and users of the data.</span>
+<span class="lead">The [Release Schema](../release) provides a detailed specification of the fields and data structures to use when publishing data, with supplementary schemas showing how to combine release and records. This reference section works step-by-step through additional supporting information to assist publishers and users of the data.</span>
+
+(Note: If any conflicts are found between this text, and the text within the schema, the schema takes precedence)
 
 ## Release structure
 
@@ -253,7 +251,7 @@ ToDo:
 
 ToDo: Update once organisation contact details confirmed.
 
-
+### Attachment
 
 ### Date
 

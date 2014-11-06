@@ -45,6 +45,7 @@ The OCID is case sensitive.
 The following are examples of valid OCIDs:	
 
 > ocds-a2ef3d01-1594121
+
 > ocds-df4534dg-eu-192301-2009 
 
 ### Prefix agency
@@ -98,7 +99,7 @@ Because a **contracting process** is defined by a unique initiation process (a u
 **BoxOut: Recommended characters for identifiers**
 ToDo: Address whether any characters should be considered illegal in identifiers.
 
-## Organisation identifiers
+## Organizations
 
 <span class="lead">Reliably identifying the legal entities involved in a contracting process is vital for transparency and accountabilty, and for carrying out analysis to improve procurement. 
 

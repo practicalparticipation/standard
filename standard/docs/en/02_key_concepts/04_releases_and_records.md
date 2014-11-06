@@ -1,6 +1,6 @@
 [TOC]
 
-# Documents, Releases, Records, Amendments and Notices
+# Documents, Releases & Records
 
 ## Documents
 
@@ -78,15 +78,15 @@ Publishers may not all be able to initially provide fully versioned releases, bu
 
 When new information becomes available, it should be contained in a new release, and the contracting record should be updated to reflect this. 
 
-The term amendment has a specific legal significance in many jurisdictions. The standard provides a way to indicate when a release is an amendment, and to provide a justification for the amendment that is being made.
+The term amendment has a specific legal significance in many jurisdictions. The ```releaseTag``` provides a way to indicate when a release is an amendment, and the schema includes space to provide details of changes, and justification for the amendment that is being made.
 
 When **records** are created by merging together **releases** then a version history that can be used to track changes to fields is created in the **record**, allowing users to look back and see the changes that have occured over the lifetime of a contracting process. 
 
 <div class="well">
-Some publishers may wish to make past data available without generating releases for each change that happened to the contract. Whilst the recommended approach is to generate releases, and compile these into a record, it is possible to follow the **record schema,** the guidance on merging, and the pattern for representing versioned information within of records, to generate a record directly from a database. 
+Some publishers may wish to make past data available without generating releases for each change that happened to the contract. Whilst the recommended approach is to generate releases, and compile these into a record, it is possible to follow the <strong>record schema</strong>, the guidance on merging, and the pattern for representing versioned information within of records, to generate a record directly from a database. 
 </div>
 
-**ToDo:** Review after amendment changes are adequately addressed.
+ToDo: Review Amendment Information
 
 ## Notices
 
@@ -94,4 +94,11 @@ Good open contracting practice involves the widespread publication of key **noti
 
 Users want to be able to know when notices were published, where they were published, and what they contained. 
 
-A notice can be attached to a tender, award or contract within OCDS using the **documents** property, and a **documentType** value of ‘notice’. If the notice is accessible online, then the URL to the notice can be given. If the notice was published in a printed publication, or posted in some other public venue, the document **description** field can be used to explain this, and the **format** can be set to ‘offline/print’. The **publicationDate** of the document should be the date the notice was made available.
+A notice can be attached to a tender, award or contract within OCDS using the ```documents``` property, and a ```documentType``` value of ‘notice’. If the notice is accessible online, then the URL to the notice can be given. If the notice was published in a printed publication, or posted in some other public venue, the document ```description``` field can be used to explain this, and the ```format``` can be set to ‘offline/print’. The ```publicationDate``` of the document should be the date the notice was made available.
+
+## Packages
+
+<span class="lead">For the convenience of users, a collection of releases, or a collection of records, can be combined together in a release or record package.</span>
+
+View the [schema reference](../../schema) for more details. 
+
