@@ -16,7 +16,7 @@ The table below shows the different categories of data that publishers should se
 
 The detailed fields that can be used to represent each of these items are described in the ODCS schema, but the table below can be used for policy-level planning. 
 
-<iframe src="https://docs.google.com/spreadsheets/d/12W3C3lHY2FW2MRuCGm-kV53bk03TGhXB_z223Rg8xUg/edit#gid=428233391" width="100%" height="500"></iframe>
+<iframe src="https://docs.google.com/spreadsheets/d/12W3C3lHY2FW2MRuCGm-kV53bk03TGhXB_z223Rg8xUg/pubhtml?gid=428233391&amp;single=true&amp;widget=true&amp;headers=false" width="100%" height="500"></iframe>
 
 
 ## How to publish
