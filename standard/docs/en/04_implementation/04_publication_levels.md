@@ -96,3 +96,7 @@ For simplicity, the OCDS does not yet include URI fields at all points of the st
 
 #### Stepping up
 Whatever level you are at - publishing data is only part of the process. It is important to also [engage with users](http://www.opendataimpacts.net/engagement/) and to think about how to build your open data back into your organisational processes, closing the feedback loop.
+
+## Examples
+
+As use of the OCDS specification develops we will compile examples to show publication at each of these levels.
