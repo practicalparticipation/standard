@@ -27,39 +27,15 @@ A release package, modelled on the [Data Package](http://dataprotocols.org/data-
 
 <div class="include-csv" data-src="standard/docs/field_definitions/record-package.csv" data-table-class="table table-striped"></div>
 
-#### URI
+The uri should unique identify this release package. Publishers should provide a [dereferenceable HTTP URI](http://en.wikipedia.org/wiki/Dereferenceable_Uniform_Resource_Identifier) wherever possible and should host the data package at this URI, enabling users to look-up and verify the contents of a release package from its original source. 
 
-<div class="include-csv" data-src="standard/docs/field_definitions/uri.csv" data-table-class="table table-striped"></div>
+* The [publishedDate](#date) on which this package was published. If a package is automatically generated and re-published on a regular basis, this date should reflect the date of the last change to the contents of the package. 
 
-Fieldname: uri (ToDo: Should I include this?)
+* The publisher should be identified using an Organisation block. See the [Organization/Entity](#entity) guidance for details.
 
-The URI should unique identify this release package. Publishers should provide a [dereferenceable HTTP URI](http://en.wikipedia.org/wiki/Dereferenceable_Uniform_Resource_Identifier) wherever possible and should host the data package at this URI, enabling users to look-up and verify the contents of a release package from its original source. 
+* See the [licensing guidance](../../implementation/publication_patterns#licensing) for more details on selecting and publishing license information. 
 
-#### Published Date
-
-Fieldname: publishedDate (ToDo: Should I include this?)
-
-The [date](#date) on which this package was published.
-
-If a package is automatically generated and re-published on a regular basis, this date should reflect the date of the last change to the contents of the package. 
-
-#### Publisher
-
-Fieldname: publisher
-
-An identifier for the publisher. See the [Organization/Entity](#entity) guidance for details.
-
-#### License
-
-Fieldname: license
-
-See the [licensing guidance](../../implementation/publication_patterns#licensing) for more details on selecting and publishing license information. 
-
-#### Publication Policy
-
-Fieldname: publicationPolicy
-
-See the [publication policy](../../implementation/publication_patterns#publication-policy) guidance for more details.
+* See the [publication policy](../../implementation/publication_patterns#publication-policy) guidance for more details.
 
 ### Top level fields
 
