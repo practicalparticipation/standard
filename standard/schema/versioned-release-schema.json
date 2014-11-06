@@ -6,14 +6,14 @@
         "ocid": {
             "type": "string"
         },
-        "releaseID": {
+        "id": {
             "type": "string"
         },
-        "releaseDate": {
+        "date": {
             "type": "string",
             "format": "date-time"
         },
-        "releaseTag": {
+        "tag": {
             "type": "string",
             "enum": ["planning", "tenderNotice", "awardNotice", "contractSignature", "contractAmendment", "report", "spending", "terminationNotice", "compiled"]
         },
@@ -24,38 +24,37 @@
         },
         "buyer": { 
             "mergeStrategy": "ocdsVersion",
-            "type": "object",
-            "$ref": "#/definitions/organization" 
+            "$ref": "#/definitions/Organization" 
         },
         "planning": { 
-           "$ref": "#/definitions/planning" 
+           "$ref": "#/definitions/Planning" 
         },
         "formationType": {
             "type": "string",
             "enum": ["tender"]
         },
         "tender": {
-            "$ref": "#/definitions/tender" 
+            "$ref": "#/definitions/Tender" 
         },
         "awards": { 
             "mergeStrategy": "arrayMergeById",
-            "mergeOptions": {"idRef": "awardID"},
+            "mergeOptions": {"idRef": "id"},
             "type": "array",
-            "items": { "$ref": "#/definitions/award" },
+            "items": { "$ref": "#/definitions/Award" },
             "uniqueItems": true
         },
         "contracts": { 
             "mergeStrategy": "arrayMergeById",
-            "mergeOptions": {"idRef": "contractID"},
+            "mergeOptions": {"idRef": "id"},
             "type": "array",
-            "items": {"$ref": "#/definitions/contract" },
+            "items": {"$ref": "#/definitions/Contract" },
             "uniqueItems": true
         },
-        "performance": { "$ref": "#/definitions/performance" }
+        "implementation": { "$ref": "#/definitions/Implementation" }
     },
-    "required": ["ocid", "releaseID", "releaseDate", "releaseTag"],
+    "required": ["ocid", "id", "date", "tag", "formationType"],
     "definitions": {
-        "identifier": {
+        "Identifier": {
             "type": "object",
             "properties": {
                 "name": {
@@ -66,7 +65,7 @@
                     "format": "uri"
                 },
                 "uid": {
-                    "type": ["string", "null"]
+                    "type": ["string", "integer", "null"]
                 },
                 "uri": {
                     "type": ["string", "null"],
@@ -80,16 +79,10 @@
             },
             "required": ["name"]
         },
-        "address": {
+        "Address": {
             "type": "object",
             "properties": {
-                "post-office-box": {
-                    "type": ["string", "null"]
-                },
-                "extended-address": {
-                    "type": ["string", "null"]
-                },
-                "street-address": {
+                "streetAddress": {
                     "type": ["string", "null"]
                 },
                 "locality":{
@@ -98,32 +91,27 @@
                 "region": {
                     "type": ["string", "null"]
                 },
-                "postal-code": {
+                "postalCode": {
                     "type": ["string", "null"]
                 },
-                "country-name": {
+                "countryName": {
                     "type": ["string", "null"]
                 }
             },
             "patternProperties": {
-                "^(country-name_[A-Za-z]{2})$": {
+                "^(countryName_[A-Za-z]{2})$": {
                     "type": ["string", "null"]
                 }
-            },
-            "required": ["locality", "region", "country-name"],
-            "dependencies": {
-                "post-office-box": ["street-address"],
-                "extended-address": ["street-address"]
             }
         },
-        "organization": {
+        "Organization": {
             "type": "object",
             "properties": {
-                "id": { "$ref": "#/definitions/identifier" },
-                "address": { "$ref": "#/definitions/address" }
+                "id": { "$ref": "#/definitions/Identifier" },
+                "address": { "$ref": "#/definitions/Address" }
             }
         },
-        "item": {
+        "Item": {
             "__comment": "Does not have merge strategy fields as is always item in array, and array is versioned.",
             "type": "object",
             "properties": {
@@ -151,18 +139,15 @@
                 },
                 "valuePerUnit": { 
                     "__comment": "This is unversioned, as all items in item array will be versioned.",
+                    "__skip_validation": true,
                     "type": "object",
                     "properties": {
                         "amount": {
-                            "mergeStrategy": "ocdsVersion",
                             "type": ["number", "null"],
                             "minimum": 0
                         },
                         "currency": {
-                            "mergeStrategy": "ocdsVersion",
-                            "type": ["string", "null"],
-                            "minLength": 3,
-                            "maxLength": 3
+                            "type": ["string", "null"]
                         }
                     }
                 }
@@ -176,7 +161,7 @@
                 }
             }
         },
-        "milestone": {
+        "Milestone": {
             "__comment": "Does not have merge strategy fields as is always item in array, and array is versioned.",
             "type": "object",
             "properties": {
@@ -193,7 +178,7 @@
                 },
                 "attachments": {
                     "type": "array",
-                    "items": { "$ref": "#/definitions/attachment" }
+                    "items": { "$ref": "#/definitions/Attachment" }
                 }
             },
             "patternProperties": {
@@ -202,7 +187,7 @@
                 }
             }
         },
-        "performance": {
+        "Implementation": {
             "type": "object",
             "properties": {
                 "transactions": {
@@ -211,62 +196,68 @@
                     "items": {
                         "type": "object",
                         "properties": {
-                            "transactionDataPackageURI": {
-                                "mergeStrategy": "ocdsVersion",
+                            "dataPackageURI": {
                                 "type": "string",
                                 "format": "uri"
                             },
-                            "transactionID": {
-                                "mergeStrategy": "ocdsVersion",
+                            "id": {
                                 "type": "string"
                             },
-                            "transactionAmount": {
-                                "mergeStrategy": "ocdsVersion",
+                            "amount": {
                                 "type": ["number", "null"]
                             }
                         },
-                        "required": ["transactionDataPackageURI", "transactionID"]
+                        "required": ["dataPackageURI", "id"],
+                        "dependencies": {
+                            "id": ["dataPackageURI"],
+                            "amount": ["dataPackageURI"]
+                        }
                     }
                 },
                 "milestones": {
                     "mergeStrategy": "ocdsVersion",
                     "type": "array",
-                    "items": { "$ref": "#/definitions/milestone" }
+                    "items": { "$ref": "#/definitions/Milestone" }
                 },
                 "reports":{
                     "mergeStrategy": "ocdsVersion",
                     "type": "array",
-                    "items": { "$ref": "#/definitions/attachment"}
+                    "items": { "$ref": "#/definitions/Attachment"}
                 }
             }
         },
-        "planning": {
+        "Planning": {
             "type": "object",
             "properties": {
-                "budgetDataPackageURI": {
+                "budget": {
                     "mergeStrategy": "ocdsVersion",
-                    "type": ["string", "null"],
-                    "format": "uri"
+                    "type": "object",
+                    "properties": {
+                        "dataPackageURI": {
+                            "type": ["string", "null"],
+                            "format": "uri"
+                        },
+                        "id": {
+                            "type": ["string", "null"]
+                        },
+                        "amount": {
+                            "type": ["number", "null"]
+                        }
+                    },
+                    "dependencies": {
+                        "id": ["dataPackageURI"],
+                        "amount": ["dataPackageURI"]
+                    }
                 },
-                "budgetID": {
-                    "mergeStrategy": "ocdsVersion",
-                    "type": ["string", "null"]
-                },
-                "budgetAmount": {
-                    "mergeStrategy": "ocdsVersion",
-                    "type": ["number", "null"]
-                },
-                "publicHearingNotice": {
-                    "$ref": "#/definitions/notice"
-                },
-                "strategicJustificiation": {
+                "publicHearingNotice": { "$ref": "#/definitions/Notice" },
+                "rationale": {
                     "mergeStrategy": "ocdsVersion",
                     "type": ["string", "null"]
                 },
                 "anticipatedMilestones": {
                     "mergeStrategy": "ocdsVersion",
                     "type": "array",
-                    "items": { "$ref": "#/definitions/milestone" }
+                    "items": { "$ref": "#/definitions/Milestone" }
                 }
             },
             "patternProperties": {
@@ -274,33 +265,28 @@
                     "mergeStrategy": "ocdsVersion",
                     "type": ["string", "null"]
                 }
-            },
-            
-            "dependencies": {
-                "budgetID": ["budgetDataPackageURI"],
-                "budgetAmount": ["budgetDataPackageURI"]
             }
         },
-        "tender": {
+        "Tender": {
             "type": "object",
-            "required": ["tenderID"],
+            "required": ["id"],
             "properties": {
-                "tenderID": {
+                "id": {
                     "mergeStrategy": "ocdsVersion",
                     "type": "string"
                 },
-                "notice": { "$ref": "#/definitions/notice" },
-                "itemsToBeProcured": {
+                "notice": { "$ref": "#/definitions/Notice" },
+                "items": {
                     "mergeStrategy": "ocdsVersion",
                     "type": "array",
                     "minItems": 1,
-                    "items": { "$ref": "#/definitions/item" },
+                    "items": { "$ref": "#/definitions/Item" },
                     "uniqueItems": true
                 },
-                "totalValue": {
-                    "$ref": "#/definitions/value"
+                "value": {
+                    "$ref": "#/definitions/Value"
                 },
-                "method": {
+                "procurementMethod": {
                     "mergeStrategy": "ocdsVersion",
                     "type": ["string", "null"],
                     "enum": ["Open", "Selective", "Limited", null]
@@ -328,17 +314,17 @@
                     "type": ["string", "null"]
                 },
                 "tenderPeriod": {
-                    "$ref": "#/definitions/period"
+                    "$ref": "#/definitions/Period"
                 },
                 "clarificationPeriod": {
-                    "$ref": "#/definitions/period"
+                    "$ref": "#/definitions/Period"
                 },
                 "clarifications": {
                     "mergeStrategy": "ocdsVersion",
                     "type": ["boolean", "null"]
                 },
                 "awardPeriod": {
-                    "$ref": "#/definitions/period"
+                    "$ref": "#/definitions/Period"
                 },
                 "numberOfBidders": {
                     "mergeStrategy": "ocdsVersion",
@@ -351,17 +337,17 @@
                 "bidders": {
                     "mergeStrategy": "ocdsVersion",
                     "type": "array",
-                    "items": { "$ref": "#/definitions/organization" },
+                    "items": { "$ref": "#/definitions/Organization" },
                     "uniqueItems": true
                 },
                 "procuringEntity": { 
                     "mergeStrategy": "ocdsVersion",
-                    "$ref": "#/definitions/organization" 
+                    "$ref": "#/definitions/Organization" 
                 },
                 "attachments": {
                     "mergeStrategy": "ocdsVersion",
                     "type": "array",
-                    "items": { "$ref": "#/definitions/attachment" },
+                    "items": { "$ref": "#/definitions/Attachment" },
                     "uniqueItems": true
                 }
             },
@@ -381,74 +367,67 @@
 
             }
         },
-        "award": {
+        "Award": {
             "type": "object",
-            "required": ["awardID"],
+            "required": ["id"],
             "properties": {
-                "awardID": { 
+                "id": { 
                     "type": "string"
                 },
-                "notice": { "$ref": "#/definitions/notice" },
-                "awardDate": {
+                "notice": { "$ref": "#/definitions/Notice" },
+                "date": {
                     "mergeStrategy": "ocdsVersion",
                     "type": ["string", "null"],
                     "format": "date-time"
                 },
-                "awardValue": {
-                    "$ref": "#/definitions/value"
+                "value": {
+                    "$ref": "#/definitions/Value"
                 },
                 "suppliers": {
                     "mergeStrategy": "ocdsVersion",
                     "type": "array",
-                    "items": { "$ref": "#/definitions/organization" },
+                    "items": { "$ref": "#/definitions/Organization" },
                     "uniqueItems": true
                 },
-                "itemsAwarded": {
+                "items": {
                     "mergeStrategy": "ocdsVersion",
                     "type": "array",
                     "minItems": 1,
-                    "items": { "$ref": "#/definitions/item" },
+                    "items": { "$ref": "#/definitions/Item" },
                     "uniqueItems": true
                 }
             } 
         },
-        "contract": {
+        "Contract": {
             "type": "object",
-            "required": ["contractID"],
+            "required": ["id"],
             "properties": {
-                "contractID": { 
+                "id": { 
                     "type": "string"
                 },
                 "awardID": {
                     "mergeStrategy": "ocdsVersion",
                     "type": ["string", "null"]
                 },
-                "contractPeriod": {
-                    "$ref": "#/definitions/period"
+                "period": {
+                    "$ref": "#/definitions/Period"
                 },
-                "contractValue": {
-                    "$ref": "#/definitions/value"
+                "value": {
+                    "$ref": "#/definitions/Value"
                 },
                 "isAmendment": {
                     "mergeStrategy": "ocdsVersion",
                     "type": ["boolean", "null"]
                 },
-                "amendment": { "$ref": "#/definitions/amendment" },
-                "itemsContracted": {
+                "amendment": { "$ref": "#/definitions/Amendment" },
+                "items": {
                     "mergeStrategy": "ocdsVersion",
                     "type": "array",
                     "minItems": 1,
-                    "items": { "$ref": "#/definitions/item" },
+                    "items": { "$ref": "#/definitions/Item" },
                     "uniqueItems": true
                 },
-                "deliverables": {
-                    "mergeStrategy": "ocdsVersion",
-                    "type": "array",
-                    "minItems": 1,
-                    "items": { "$ref": "#/definitions/deliverable" },
-                    "uniqueItems": true
-                },
-                "signatureDate": {
+                "dateSigned": {
                     "mergeStrategy": "ocdsVersion",
                     "type": ["string", "null"],
                     "format": "date-time"
@@ -456,12 +435,12 @@
                 "attachments": {
                     "mergeStrategy": "ocdsVersion",
                     "type": "array",
-                    "items": { "$ref": "#/definitions/attachment" },
+                    "items": { "$ref": "#/definitions/Attachment" },
                     "uniqueItems": true
                 }
             }
         },
-        "notice": {
+        "Notice": {
             "type": "object",
             "properties": {
                 "id": {
@@ -473,7 +452,7 @@
                     "type": ["string", "null"],
                     "format": "uri"
                 },
-                "publishedDate": {
+                "date": {
                     "mergeStrategy": "ocdsVersion",
                     "type": ["string", "null"],
                     "format": "date-time"
@@ -483,18 +462,18 @@
                     "type": ["string", "null"],
                     "type": ["boolean", "null"]
                 },
-                "amendment": { "$ref": "#/definitions/amendment" }
+                "amendment": { "$ref": "#/definitions/Amendment" }
             }
         },
-        "amendment": {
+        "Amendment": {
             "type": "object",
             "properties": {
-                "amendmentDate": {
+                "date": {
                     "mergeStrategy": "ocdsVersion",
                     "type": ["string", "null"],
                     "format": "date-time"
                 },
-                "amendedFields": {
+                "fields": {
                     "mergeStrategy": "ocdsVersion",
                     "type": ["string", "null"]
                 },
@@ -504,7 +483,7 @@
                 }
             }
         },
-        "period": {
+        "Period": {
             "type": "object",
             "properties": {
                 "startDate": {
@@ -519,7 +498,7 @@
                 }
             }
         },
-        "attachment": {
+        "Attachment": {
             "__comment": "Does not have merge strategy fields as is always item in array, and array is versioned.",
             "type": "object",
             "properties": {
@@ -530,7 +509,7 @@
                     "type": ["string", "null"],
                     "format": "uri"
                 },
-                "lastModified": {
+                "modified": {
                     "type": ["string", "null"],
                     "format": "date-time"
                 }
@@ -541,7 +520,7 @@
                 }
             }
         },
-        "value": {
+        "Value": {
             "type": "object",
             "properties": {
                 "amount": {
@@ -551,29 +530,6 @@
                 },
                 "currency": {
                     "mergeStrategy": "ocdsVersion",
-                    "type": ["string", "null"],
-                    "minLength": 3,
-                    "maxLength": 3
-                }
-            }
-        },
-        "deliverable": {
-            "__comment": "Does not have merge strategy fields as is always item in array, and array is versioned.",
-            "type": "object",
-            "properties": {
-                "description": {
-                    "type": ["string", "null"]
-                },
-                "dueDate": {
-                    "type": ["string", "null"],
-                    "format": "date-time"
-                },
-                "attachment": {
-                    "$ref": "#/definitions/attachment"
-                }
-            },
-            "patternProperties": {
-                "^(description_[A-Za-z]{2})$": {
                     "type": ["string", "null"]
                 }
             }
