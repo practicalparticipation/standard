@@ -2,7 +2,9 @@
 
 ## Identifiers
 
-**ToDo: Write intro paragraph**
+<span class="lead">The use of consistent identifiers is vital to join up data on open contracting. This section introduces the Open Contracting ID (OCID), and other places identifiers can be used in OCDS data.</span>
+
+There are two kinds of identifier in OCDS: **Global unique identifiers** which should refer consistently to a single thing wherever they are used; and **local identifiers** which only need to unique within the scope of a particular block of data, and which provide a convenience mechanism to identify and cross-reference inside a particular data release or record. 
 
 ### OCID
 
@@ -90,7 +92,7 @@ The publisher can use the local namespace section of the OCID to distinguish bet
 
 #### Local identifier
 
-Publishers can select the local identifier to use for indentifying a unique **contracting process**.
+Publishers can select the local identifier to use for identifying a unique **contracting process**.
 
 Because a **contracting process** is defined by a unique initiation process (a unique tender in the procurement case), a common approach will be to use the identifier of the initiation process, and to ensure that award and contract and spending data systems also keep track of this identifier. 
 
@@ -141,13 +143,55 @@ Local lists may commonly need to be used for identifying public bodies, as in ma
 At present, the OCDS standard defers to the organisation list prefixes provided by the [IATI Organisation Registration Agency codelist](http://iatistandard.org/codelists/OrganisationRegistrationAgency/). If you require codes to be added to this list, please contact the Open Contracting Data Standard support and they will work to achieve this.
 
 
-## Other identifiers
+## Local identifiers
+
+Local identifiers do not need to be globally unique, but they should be used consistently in each of the releases related to a given contracting process.
+
+### Release ID
+
+The release ID must be unique within the contracting process it is part of, **and** within any given data package it is part of. 
+
+I.e. within any data package, or for any given ocid, there should be no two release IDs that refer to different releases.
 
 ### Tender ID
 
+The tender ID must be unique within the contracting process it is part of. 
+
+I.e. for any given ocid, there should be no two tender IDs that refer to different tender sections.
+
 ### Award ID
+
+The award ID must be unique within the contracting process it is part of.
+
+I.e. for any given ocid, there should be no two award IDs that refer to different awards.
 
 ### Contract ID
 
-## Codelists
+The contract ID must be unique within the contracting process it is part of.
+
+I.e. for any given ocid, there should be no two contract IDs that refer to different contracts.
+
+Contracts should always cross-reference a related award (using the awardID property), as key information such as suppliers may be contained in the related award. It is possible to use the same value for the award id and contract id in these cases. 
+
+### Item ID
+
+An item ID must be unique within a given array of items, and must be used consistently across all the releases in a contracting process. 
+
+The same id may be re-used in another array of items within the same release, and no cross-reference between these identifiers is implied. 
+
+For example:
+
+* A release may contain tender.items (Items tendered for) and award.items
+* tender.items may contain three items, with identifiers of: [1, 2, 3]
+* award.items may contain two items, with identifiers of: [3, 4]
+* A second release is issued in which award.items contains six items: [3, 4, 5]
+
+In this situation, note that:
+
+* There is no implied relationship between the tender.item with id 3 and the award.item with id 3: these could be entirely different items
+* There is a relationship between the award.items with id 3 and 4 in the first release, and with award.id of 3 and 4 in the second release. The second release should be interpreted as updating items 3 and 4, and adding a new item, 5. 
+
+#### Document ID
+
+Document IDs should be treated the same as Item ID.
 
