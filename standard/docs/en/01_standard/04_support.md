@@ -10,7 +10,5 @@ If you are planning to implement or use the OCDS Specification you may find the 
 
 You can find details of how to join this list in the [Get Involved](http://standard.open-contracting.org/getinvolved/) section of the OCDS website.
 
-You can also 
-
 Announcements about proposed updates to the specification, and periods for comment, will be made to the [public-ocds@webfoundation.org](mailto:public-ocds@webfoundation.org) mailing list.
 
