@@ -77,11 +77,16 @@ NOTE: This example is based on an earlier version of the schema, and does not sh
   <li><a href="#attachment" data-toggle="tab">attachment</a></li>  
 </ul>
 <div class="tab-content">
+    
 <div class="tab-pane active" id="release">
+    
 <div class="include-csv" data-src="standard/example/flat/release.csv" data-table-class="table table-striped"></div>
+
 </div>
 <div class="tab-pane" id="award">
+
 <div class="include-csv" data-src="standard/example/flat/award.csv" data-table-class="table table-striped"></div>
+
 </div>
 <div class="tab-pane" id="contract">
 <div class="include-csv" data-src="standard/example/flat/contract.csv" data-table-class="table table-striped"></div>
