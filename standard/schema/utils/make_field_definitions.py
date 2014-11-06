@@ -56,3 +56,9 @@ if __name__ == "__main__":
     make_definition_table(release,join(file_path,"release-address.csv"),what="definitions",section="Address")
 
     make_definition_table(release,join(file_path,"release-organization.csv"),what="definitions",section="Organization")
+
+    make_definition_table(release,join(file_path,"release-item.csv"),what="definitions",section="Item")
+    
+    make_definition_table(release,join(file_path,"release-milestone.csv"),what="definitions",section="Milestone")
+    
+    make_definition_table(release,join(file_path,"release-value.csv"),what="definitions",section="Value")
