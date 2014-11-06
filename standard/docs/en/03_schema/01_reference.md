@@ -25,6 +25,8 @@ Releases are given a [tag](#release-tag) to indicate what stage of a contracting
 
 A release package, modelled on the [Data Package](http://dataprotocols.org/data-packages/) protocol, provides meta-data about release(s) it contains. 
 
+<div class="include-csv" data-src="standard/docs/field_definitions/record-package.csv" data-table-class="table table-striped"></div>
+
 #### URI
 
 <div class="include-csv" data-src="standard/docs/field_definitions/uri.csv" data-table-class="table table-striped"></div>

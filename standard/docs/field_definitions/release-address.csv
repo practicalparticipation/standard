@@ -1,0 +1,6 @@
+Field Name,Title,Types,Format,Description
+postalCode,,"string, null",,
+countryName,,"string, null",,
+streetAddress,,"string, null",,
+region,,"string, null",,
+locality,,"string, null",,

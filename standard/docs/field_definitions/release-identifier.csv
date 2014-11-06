@@ -1,0 +1,5 @@
+Field Name,Title,Types,Format,Description
+scheme,,"string, null",uri,[Consult Codelist] The scheme that holds the unique identifiers used to identify the item being identified. Consult the codelists first to check the standard schemes recommended for this identifier.
+id,,"string, integer, null",,The identifier for the Thing under the given scheme.
+uri,,"string, null",uri,URI to identify the Thing under the given scheme.
+description,,"string, null",,"The text-based description of the id, if provided by the scheme. In the case of a goods classification, this maybe the description of the code. In the case of an organzational identifier, this may be the legal name as recorded by the used registry."
