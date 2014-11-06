@@ -27,7 +27,7 @@ A release package, modelled on the [Data Package](http://dataprotocols.org/data-
 
 #### URI
 
-<div class="include-csv" data-src="docs/field_definitions/uri.csv" data-table-class="table table-striped"></div>
+<div class="include-csv" data-src="standard/docs/field_definitions/uri.csv" data-table-class="table table-striped"></div>
 
 Fieldname: uri (ToDo: Should I include this?)
 
