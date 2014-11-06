@@ -4,7 +4,7 @@ import csv
 
 
 def make_definition_table(json,file_path,what="properties",section=""): 
-    table = [['Field Name','Title','Types','Format','Description']]
+    table = [['Field Name','Description','Format']]
     if(section):
         block = json[what][section]["properties"]
     else:
@@ -22,10 +22,12 @@ def make_definition_table(json,file_path,what="properties",section=""):
         if types == "array":
             pass
         if block[prop].get("$ref"):
-            table.append([prop,block[prop].get('title',''),"Reference","-","See " + block[prop]["$ref"].replace("#/definitions/","")])
+          #  table.append([prop,block[prop].get('title',''),"Reference","-","See " + block[prop]["$ref"].replace("#/definitions/","")])
+          table.append([prop,"See " + block[prop]["$ref"].replace("#/definitions/",""),"Reference"])
         else:
-            table.append([prop,block[prop].get('title',''),types,block[prop].get('format',''),block[prop].get('description','')])
-        
+          #  table.append([prop,block[prop].get('title',''),types,block[prop].get('format',''),block[prop].get('description','')])
+          table.append([prop,block[prop].get('description',''),block[prop].get('format','')])
+          
         with open(file_path, 'wb') as f:
             writer = csv.writer(f)
             for row in table:
