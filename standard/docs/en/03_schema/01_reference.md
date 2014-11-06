@@ -6,11 +6,11 @@ See [https://github.com/open-contracting/standard/issues/64](https://github.com/
 
 # Schema Reference
 
-<span class="lead">The [OCDS Schema pages](ToDo) provides a detailed specification of the fields and data structures to use when publishing data. This reference section works step-by=step through additional supporting information to assist publishers and users of the data.</span>
+<span class="lead">The [Release Schema](../release) provides a detailed specification of the fields and data structures to use when publishing data. This reference section works step-by-step through additional supporting information to assist publishers and users of the data.</span>
 
 ## Release structure
 
-The majority of OCDS data is held within a structured [release](ToDo). Releases must be published within a release package. Releases are made up of a number of blocks of data, including:
+The majority of OCDS data is held within a structured [release](../release). Releases must be published within a release package. Releases are made up of a number of blocks of data, including:
 
 * tender
 * award
@@ -31,7 +31,7 @@ A release package, modelled on the [Data Package](http://dataprotocols.org/data-
 
 Fieldname: uri (ToDo: Should I include this?)
 
-The URI should unique identify this release package. Publishers should provide a dereferenceable HTTP URI wherever possible and should host the data package at this URI, enabling users to look-up and verify the contents of a release package from its original source. 
+The URI should unique identify this release package. Publishers should provide a [dereferenceable HTTP URI](http://en.wikipedia.org/wiki/Dereferenceable_Uniform_Resource_Identifier) wherever possible and should host the data package at this URI, enabling users to look-up and verify the contents of a release package from its original source. 
 
 #### Published Date
 

@@ -1,5 +1,1 @@
-{{ STATIC_URL }}
-
-{% url 'schema' release_name 'release-schema' %}
-
-<script src="{{ STATIC_URL }}docson/widget.js" data-schema="{% url 'schema' release_name 'release-schema' %}"></script>
+<script src="/standard/static/docson/widget.js" data-schema="../../../release-package-schema.json"></script>
