@@ -1,12 +1,12 @@
 [TOC]
 
-## Identifiers
+# Identifiers
 
 <span class="lead">The use of consistent identifiers is vital to join up data on open contracting. This section introduces the Open Contracting ID (OCID), and other places identifiers can be used in OCDS data.</span>
 
 There are two kinds of identifier in OCDS: **Global unique identifiers** which should refer consistently to a single thing wherever they are used; and **local identifiers** which only need to unique within the scope of a particular block of data, and which provide a convenience mechanism to identify and cross-reference inside a particular data release or record. 
 
-### OCID
+## OCID
 
 <span class="lead">An Open Contracting ID (ocid) is a **globally unique identifier **for a** contracting process**.</span> 
 
@@ -14,15 +14,13 @@ There are two kinds of identifier in OCDS: **Global unique identifiers** which s
 
 Each publisher is responsible for **registering or selecting a prefix **and then using this to generate their own **ocid**s. Publishers must then using their OCIDs consistently in any release of data related to a specific contracting process. 
 
-<span class="well">
 Using a consistent identifier for a **contracting process** that can tie together related tenders, awards, contracts and updates is vital for true Open Contracting. Without this, users cannot understand how these different processes relate to one another. 
 
 Some publishers may not currently have a consistent identifier used across the different stages of their contracting process, with different and non-linked identifiers for tenders, awards and contracts. In these cases, publishers will need to look at ways to either update their business processes to use a consistent identifier, or will need to develop a process to map existing different identifiers to a common contracting process identifier that can be used to generate an OCID.
 
 The use of a **globally unique** OCID allows third-parties to refer to a contracting process with confidence, and means that when multiple open contracting datasets are brought together there is no risk of data about different contracting processes clashing or becoming confused. 
-</span>
 
-#### Construction
+### Construction
 
 An ocid is made up of four parts. The first three can generally be set as constant values in most systems:
 
@@ -42,18 +40,18 @@ This allows publishers to hold the local identifier within their own systems, an
 
 The OCID is case sensitive.
 
-#### Examples
+### Examples
 
 The following are examples of valid OCIDs:	
 
 > ocds-a2ef3d01-1594121
 > ocds-df4534dg-eu-192301-2009 
 
-#### Prefix agency
+### Prefix agency
 
 This defaults to ‘ocds’. During the current stage of OCDS development, Open Contracting is the only organisation issuing valid prefixes. In future, other organisations may be able to issue prefixes, and a codelist of approved prefix agencies will be incorporated into the standard. 
 
-#### Registered prefix
+### Registered prefix
 
 Prefix are randomly generated lowercase alpha-numberic strings. A prefix is assigned to each organisation that holds the existing internal identifier for a Contracting Processes. 
 
@@ -82,7 +80,7 @@ A re-publisher, who has aggregated data from multiple original publishers, when 
   </tr>
 </table>
 
-#### Local namespace
+### Local namespace
 
 The default value for local namespace is 01
 
@@ -90,7 +88,7 @@ A single publisher may have multiple series of **contracting process** that they
 
 The publisher can use the local namespace section of the OCID to distinguish between different series of contracting process. 
 
-#### Local identifier
+### Local identifier
 
 Publishers can select the local identifier to use for identifying a unique **contracting process**.
 
@@ -100,14 +98,6 @@ Because a **contracting process** is defined by a unique initiation process (a u
 **BoxOut: Recommended characters for identifiers**
 ToDo: Address whether any characters should be considered illegal in identifiers.
 
-## Tender, award and contract identifiers
-
-<span class="lead">A single contracting process may result in multiple awards and contracts. In order to link together awards and contracts, and to support alternative serialisations of open contracting data, each tender, award and contract section of a release should have a locally unique identifier.</span>
-
-Unlike the OCID, which must be globally unique, the identifiers should be interpreted only in the scope of the contracting process they belong to. They must be used consistently across releases relating to the same contracting process. For example, if an award is labelled with an ID of ‘1’ in a release, any release that modifies this same award must also use ‘1’ as the ID. 
-
-Users wishing to store a globally unique identifier for an award or contract can do so by concatenating together the OCID and related award or contract ID. 
-
 ## Organisation identifiers
 
 <span class="lead">Reliably identifying the legal entities involved in a contracting process is vital for transparency and accountabilty, and for carrying out analysis to improve procurement. 
@@ -116,17 +106,33 @@ Publishers should collect and record the **legal identifier** from an official r
 
 There are two parts to expressing an **organisation identifier** in open contracting data. 
 
-1. An **organisation register prefix **identifying a **register** in which the organisation is identified
+1. An **organization register prefix **identifying a **register** in which the organisation is identified
 
-2. The **existing organisational ID** provided in that public register
+2. The **existing organizational ID** provided in that public register
 
-These are combined into a string (with - as the separator). 
 
-<div class="well">
-For example, the **organisation register prefix** for UK Companies House is GB-COH. The organisation **Development Initiatives** has been assigned the company number ‘06368740’ by Companies House. The globally unique organisation identifier for Development Initiatives is then ‘GB-COH-06368740’. 
+### Example
+For example, the **organisation register prefix** for UK Companies House is GB-COH. The organisation **Development Initiatives** has been assigned the company number ‘06368740’ by Companies House. The globally unique organisation identifier for Development Initiatives can then expressed as follows:
+
+<div class="tabbable">
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#json" data-toggle="tab">json</a></li>
+  <li><a href="#csv" data-toggle="tab">csv</a></li>
+</ul>
+
+<div class="tab-content">
+<div class="tab-pane active" id="json">
+<div class="include-json" data-src="standard/example/organization.json"></div>
+</div>
+<div class="tab-pane" id="csv">
+<div class="include-csv" data-src="standard/example/organization.csv" data-table-class="table table-striped"></div>
+</div>
+</div>
 </div>
 
-Publishers may choose to store this in their databases in two parts (register, and registered ID), or as a single string. As the identifiers coming from third-party systems can contain various characters, including / and -, we recommend that publishers pay careful attention to the validation requirements of any database fields storing these identifiers. Users may find that stripping all non alphanumeric charachters from organisation IDs when analysing data helps avoid missed matches, due to different publishers databases handling of certain characters. 
+In OCDS, the organization register prefix is included in the ```scheme``` field of an identifier block, with the existing organization id placed in the ```id``` field. If there is a recognized public URI that uniquely identifies this organization (for example, drawn from [Open Corporates](https://opencorporates.com/)) this can also be given in the ```uri``` field. 
+
+### Choosing an identifier
 
 The **organisation register prefix** is used to refer to a register from which the organisation identifier is drawn. There are a range of different kinds of **organisation list**:
 
@@ -145,27 +151,33 @@ At present, the OCDS standard defers to the organisation list prefixes provided 
 
 ## Local identifiers
 
-Local identifiers do not need to be globally unique, but they should be used consistently in each of the releases related to a given contracting process.
+<span class="lead">A single contracting process may result in multiple awards and contracts. In order to link together awards and contracts, and to support alternative serialisations of open contracting data, each tender, award and contract section of a release should have a locally unique identifier.</span>
 
-### Release ID
+Unlike the OCID, which must be globally unique, the identifiers should be interpreted only in the scope of the contracting process they belong to. They must be used consistently across releases relating to the same contracting process. For example, if an award is labelled with an ID of ‘1’ in a release, any release that modifies this same award must also use ‘1’ as the ID. 
+
+A second set of local identifiers, for items, milestones and documents need only be unique in the arrays in which the appear. 
+
+### In detail
+
+#### Release ID
 
 The release ID must be unique within the contracting process it is part of, **and** within any given data package it is part of. 
 
 I.e. within any data package, or for any given ocid, there should be no two release IDs that refer to different releases.
 
-### Tender ID
+#### Tender ID
 
 The tender ID must be unique within the contracting process it is part of. 
 
 I.e. for any given ocid, there should be no two tender IDs that refer to different tender sections.
 
-### Award ID
+#### Award ID
 
 The award ID must be unique within the contracting process it is part of.
 
 I.e. for any given ocid, there should be no two award IDs that refer to different awards.
 
-### Contract ID
+#### Contract ID
 
 The contract ID must be unique within the contracting process it is part of.
 
@@ -173,7 +185,7 @@ I.e. for any given ocid, there should be no two contract IDs that refer to diffe
 
 Contracts should always cross-reference a related award (using the awardID property), as key information such as suppliers may be contained in the related award. It is possible to use the same value for the award id and contract id in these cases. 
 
-### Item ID
+#### Item ID
 
 An item ID must be unique within a given array of items, and must be used consistently across all the releases in a contracting process. 
 

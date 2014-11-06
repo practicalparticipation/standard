@@ -51,6 +51,8 @@ if __name__ == "__main__":
 
     make_definition_table(recordPackage,join(file_path,"record-package.csv"))
     
+    make_definition_table(releasePackage,join(file_path,"release-package.csv"))
+    
     make_definition_table(release,join(file_path,"release-identifier.csv"),what="definitions",section="Identifier")
 
     make_definition_table(release,join(file_path,"release-address.csv"),what="definitions",section="Address")

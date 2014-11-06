@@ -25,7 +25,7 @@ Releases are given a [tag](#release-tag) to indicate what stage of a contracting
 
 A release package, modelled on the [Data Package](http://dataprotocols.org/data-packages/) protocol, provides meta-data about release(s) it contains. 
 
-<div class="include-csv" data-src="standard/docs/field_definitions/record-package.csv" data-table-class="table table-striped schema-table"></div>
+<div class="include-csv" data-src="standard/docs/field_definitions/release-package.csv" data-table-class="table table-striped schema-table"></div>
 
 * The uri should unique identify this release package. Publishers should provide a [dereferenceable HTTP URI](http://en.wikipedia.org/wiki/Dereferenceable_Uniform_Resource_Identifier) wherever possible and should host the data package at this URI, enabling users to look-up and verify the contents of a release package from its original source. 
 
@@ -151,15 +151,16 @@ Records should be embedded within a record package.
 
 ### Package meta-data
 
-ToDo
+<div class="include-csv" data-src="standard/docs/field_definitions/record-package.csv" data-table-class="table table-striped schema-table"></div>
 
-### Top Level Fields
+See the guidance on [package meta-data](#package-metadata) above. In addition, a record package includes:
 
-#### Packages
+* ```packages``` - which should provide links to all the release packages used to compile this record. 
+* ```records``` - see below.
 
 ### Records
 
-An array of one or more records, consisting of the following sections:
+Each record package contains an array of one or more records, consisting of the following sections:
 
 * Releases (required)
 * Compiled Release (optional)
@@ -178,15 +179,27 @@ In order to locate the specific release inside a release package the releaseID o
 
 For example:
 
-* http://ocds.open-contracting.org/demos/releases/12345.json#ocds-a2ef3d01-1594121/1 to refer to the release with releaseID:ocds-a2ef3d01-1594121/1 
+* http://ocds.open-contracting.org/demos/releases/12345.json#ocds-a2ef3d01-1594121/1 to refer to the release with a release.id of ocds-a2ef3d01-1594121/1 
 
 ToDo: Construct these as real examples.
 
 #### Compiled Release
 
+The compiled release is latest version of all the data about this contracting process, and has the same schema as a release.
+
+The process for creating a compiled release is described in the guidance on [merging](../../implementation/merging). 
+
+A compiled release provides a snapshot of the current state of a contracting process. 
+
 #### Versioned Release
 
+A versioned release contains the history of all the data in the compiled release, including which fields have changed, when they were changed, and the release that updated them.
 
+Providing this versioned information is valuable for many use cases relating to contract monitoring. 
+
+Publishers may chose to provide a copy of the record with, and without, this information, as for large contracting processes it can add substantially to file sizes.
+
+Third parties should also be able to use the information in the releases list to fetch source data, compile and verify their own version history for a contract.
 
 
 ## Multi-language support (ToVerify)
@@ -204,8 +217,6 @@ In order to allow users to identify all the other languages in a file, the langu
 Languages should be identified using language tags taken from [BCP47](http://tools.ietf.org/html/bcp47). The specification allows BCP47 values in order to accommodate variations in dialect where this is important. However, publishers **should** use the two letter [ISO-639-1 two-digit language tags](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) in the vast majority of circumstances, and should not assume that the users are able to distinguish between sub-tag variations (for example, OCDS publishers should strongly prefer 'en' over 'en_US' or 'en_GB'). 
 
 To include a language variation of a field, the field name should be suffixed with _ and the appropriate language tag. For example: ```title_es``` for Spanish.
-
-The JSON Schema makes use of the JSON Scheme 0.4 [‘Pattern Properties](http://spacetelescope.github.io/understanding-json-schema/reference/object.html#pattern-properties)’ definition to allow validation of multi-language fields. 
 
 ### Example
 
@@ -227,14 +238,20 @@ A contract is for ‘Software consultancy services’ may be published in a rele
 </div>
 </div>
 
-
-
+The JSON Schema makes use of the JSON Scheme 0.4 [‘Pattern Properties](http://spacetelescope.github.io/understanding-json-schema/reference/object.html#pattern-properties)’ definition to allow validation of multi-language fields. 
 
 
 ## Field reference
 
-### Entity
 
+### Classification
+
+ToDo:
+
+
+### Organization
+
+ToDo: Update once organisation contact details confirmed.
 
 
 
@@ -265,7 +282,6 @@ In the event that a date field is not bound to a specific time at all, publisher
 ### Item
 
 <div class="include-csv" data-src="standard/docs/field_definitions/release-item.csv" data-table-class="table table-striped schema-table"></div>
-
 
 
 ### Milestone
