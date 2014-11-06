@@ -224,7 +224,6 @@ A contract is for ‘Software consultancy services’ may be published in a rele
 <div class="tab-pane" id="csv">
 <div class="include-csv" data-src="standard/example/language.csv" data-table-class="table table-striped"></div>
 </div>
-
 </div>
 </div>
 
