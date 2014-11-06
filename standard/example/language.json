@@ -3,7 +3,7 @@
 	"tender": {
 	    "item": {
     			"description":"Software consultancy services",
-    			"description_es":"Servicios de consultoría en software",
+    			"description_es":"Servicios de consultoria en software",
     		    "description_fr":"Services de conseil en logiciels"
     	}
     }
