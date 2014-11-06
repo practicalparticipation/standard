@@ -27,6 +27,8 @@ A release package, modelled on the [Data Package](http://dataprotocols.org/data-
 
 #### URI
 
+<div class="include-csv" data-src="docs/field_definitions/uri.csv" data-table-class="table table-striped"></div>
+
 Fieldname: uri (ToDo: Should I include this?)
 
 The URI should unique identify this release package. Publishers should provide a dereferenceable HTTP URI wherever possible and should host the data package at this URI, enabling users to look-up and verify the contents of a release package from its original source. 
