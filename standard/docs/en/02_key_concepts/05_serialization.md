@@ -66,6 +66,8 @@ A worked example of a multi-table template is shown below.
 
 NOTE: This example is based on an earlier version of the schema, and does not show all sub-tables. It should be understood as illustrative only.
 
+<div class="include-csv" data-src="standard/example/flat/release.csv" data-table-class="table table-striped"></div>
+
 <div class="tabbable">
 <ul class="nav nav-tabs">
   <li class="active"><a href="#release" data-toggle="tab">release</a></li>
