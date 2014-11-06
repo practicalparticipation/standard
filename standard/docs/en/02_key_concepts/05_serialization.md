@@ -42,13 +42,15 @@ In each case, fields are identified by the path to their JSON equivalent. For ex
 
 would be rendered in a flat format as:
 
-<div class="include-csv" data-src="standard/example/serialization-flat.csv" data-table-class="table table-striped"></div>
+<div class="include-csv" data-src="standard/example/serialization-flat.csv" data-table-class="table table-striped schema-table"></div>
 
 A set of prototype tools for generating flat OCDS templates are [available on GitHub](https://github.com/open-contracting/flattening-ocds).
 
 ### Simplified single table 
 
 In cases where there are no one-to-many relationships within a release, a release can be represented in a single tabular row and stored as CSV. 
+
+Such cases are likely to be rare. Flat data models based upon repeated lines to handle one-to-many relationships should be avoided. 
 
 ### Multi-table
 
@@ -66,7 +68,7 @@ A worked example of a multi-table template is shown below.
 
 NOTE: This example is based on an earlier version of the schema, and does not show all sub-tables. It should be understood as illustrative only.
 
-<div class="include-csv" data-src="standard/example/flat/release.csv" data-table-class="table table-striped"></div>
+
 
 <div class="tabbable">
 <ul class="nav nav-tabs">
@@ -82,28 +84,28 @@ NOTE: This example is based on an earlier version of the schema, and does not sh
     
 <div class="tab-pane active" id="release">
     
-<div class="include-csv" data-src="standard/example/flat/release.csv" data-table-class="table table-striped"></div>
+<div class="include-csv" data-src="standard/example/flat/release.csv" data-table-class="table table-striped schema-table"></div>
 
 </div>
 <div class="tab-pane" id="award">
 
-<div class="include-csv" data-src="standard/example/flat/award.csv" data-table-class="table table-striped"></div>
+<div class="include-csv" data-src="standard/example/flat/award.csv" data-table-class="table table-striped schema-table"></div>
 
 </div>
 <div class="tab-pane" id="contract">
-<div class="include-csv" data-src="standard/example/flat/contract.csv" data-table-class="table table-striped"></div>
+<div class="include-csv" data-src="standard/example/flat/contract.csv" data-table-class="table table-striped schema-table"></div>
 </div>
 <div class="tab-pane" id="item">
-<div class="include-csv" data-src="standard/example/flat/item.csv" data-table-class="table table-striped"></div>
+<div class="include-csv" data-src="standard/example/flat/item.csv" data-table-class="table table-striped schema-table"></div>
 </div>
 <div class="tab-pane" id="organization">
-<div class="include-csv" data-src="standard/example/flat/organization.csv" data-table-class="table table-striped"></div>
+<div class="include-csv" data-src="standard/example/flat/organization.csv" data-table-class="table table-striped schema-table"></div>
 </div>
 <div class="tab-pane" id="milestone">
-<div class="include-csv" data-src="standard/example/flat/milestone.csv" data-table-class="table table-striped"></div>
+<div class="include-csv" data-src="standard/example/flat/milestone.csv" data-table-class="table table-striped schema-table"></div>
 </div>
 <div class="tab-pane" id="attachment">
-<div class="include-csv" data-src="standard/example/flat/attachment.csv" data-table-class="table table-striped"></div>
+<div class="include-csv" data-src="standard/example/flat/attachment.csv" data-table-class="table table-striped schema-table"></div>
 </div>
 </div>
 </div>
